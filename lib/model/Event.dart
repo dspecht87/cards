@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Event {
   final String id;
   final String title;
@@ -8,6 +10,8 @@ class Event {
   final String image;
   final String picture;
 
+  final DocumentReference reference;
+
   const Event(
       {this.id,
       this.title,
@@ -16,7 +20,33 @@ class Event {
       this.price,
       this.description,
       this.image,
-      this.picture});
+      this.picture,
+      this.reference
+      });
+
+  Event.fromMap(Map<String, dynamic> map, {this.reference})
+      : assert(map['id'] != null),
+        assert(map['title'] != null),
+        assert(map['who'] != null),
+        assert(map['description'] != null),
+        assert(map['image'] != null),
+        assert(map['picture'] != null),
+        assert(map['price'] != null),
+        assert(map['time'] != null),
+        title = map['title'],
+        who = map['who'],
+        description = map['description'],
+        image = map['image'],
+        picture = map['picture'],
+        price = map['price'],
+        time = map['time'],
+        id = map['id'].toString();
+
+  Event.fromSnapshot(DocumentSnapshot snapshot)
+      : this.fromMap(snapshot.data, reference: snapshot.reference);
+
+  @override
+  String toString() => "Record<$title:$who>";
 }
 
 List<Event> events = [

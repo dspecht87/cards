@@ -58,7 +58,8 @@ class DetailPage extends StatelessWidget {
       padding: new EdgeInsets.fromLTRB(0.0, 72.0, 0.0, 32.0),
       children: <Widget>[
         new EventSummary(
-          event,
+          null,
+          1,
           horizontal: false,
         ),
         new Container(

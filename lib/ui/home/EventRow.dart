@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:bitcoin_cards/model/Event.dart';
 import 'package:bitcoin_cards/ui/detail/detail_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EventSummary extends StatelessWidget {
   final Event event;
+  final int index;
   final bool horizontal;
 
-  EventSummary(this.event, {this.horizontal = true});
+  EventSummary(this.event, this.index, {this.horizontal = true});
 
-  EventSummary.vertical(this.event) : horizontal = false;
+  EventSummary.vertical(
+    this.event,
+    this.index,
+  ) : horizontal = false;
 
   @override
   Widget build(BuildContext context) {
+
     final baseTextStyle = const TextStyle(fontFamily: 'Poppins');
 
     final headerTextStyle = baseTextStyle.copyWith(

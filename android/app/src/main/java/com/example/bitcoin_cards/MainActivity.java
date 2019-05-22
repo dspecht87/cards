@@ -1,4 +1,4 @@
-package com.northernbitcoin.bitcoin_cards;
+package com.example.bitcoin_cards;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
